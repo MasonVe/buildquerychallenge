@@ -12,7 +12,7 @@ FK (TourName) References TOUR
 
 BOOKING(TourName, ClientID, EventYear, EventMonth, EventDay, DateBooked, Payment)
 PK (TourName, Client ID, EventYear, EventMonth, EventDay)
-FK (TourName, EventYear, EventMonth, EventDay, Fee) References EVENT
+FK (TourName, EventYear, EventMonth, EventDay) References EVENT
 FK (ClientID) References Client
 */
 
