@@ -117,7 +117,6 @@ VALUES (2, 'South', 'Jan', 16, 2016, 200, '12-18-2015');
 INSERT INTO BOOKING (ClientId, TourName, EventMonth, EventDay, EventYear, Payment, DateBooked)
 VALUES (3, 'South', 'Jan', 16, 2016, 200, '01-09-2016');
 
---THESE 2 HAD FOREIGN CONSTRAINT ERRORS
 
 INSERT INTO BOOKING (ClientId, TourName, EventMonth, EventDay, EventYear, Payment, DateBooked)
 VALUES (2, 'West', 'Jan', 29, 2016, 225, '12-17-2015');
@@ -161,13 +160,13 @@ SELECT * FROM tour_sum;
 
 --Task 6:
 /*
-Task 4 Query 2 Check:
+Task 4 Query 1 Check:
 To check that the first query from task 4 is returning the correct amount of entries
 I have counted the number of columns from booking on its own using:
 SELECT COUNT(*) FROM BOOKING;
-which equals 8 columns.
+which equals 10 columns.
 
-Running Query 1 also returns 8 columns of the same information.
+Running Query 1 also returns 10 columns of the same information.
 
 Query 2 Check:
 The second query check is done almost the same, running the query that was made for that task:
@@ -175,8 +174,13 @@ SELECT EventMonth, TourName, COUNT(*)
 FROM BOOKING
 GROUP BY EventMonth, TourName;
 
-It lists the columns for each event and a count of 3,2 and 3. This equals 8 Events,
-which matches the the 8 entries of events from SELECT COUNT(*) FROM BOOKING;
+It lists the columns for each event and the count of each.
+Feb North: 3
+Jan North: 2
+Jan South: 3
+Jan West: 2
+Total of 10 Entires.
+which matches the the 10 entries of events from SELECT COUNT(*) FROM BOOKING;
 
 Query 3 Check:
 This query was to list payments that are GREATER than the average.
@@ -184,9 +188,9 @@ To check this I made a query that would find the average of the payment column.
 SELECT AVG(Payment)
 FROM BOOKING;
 
-This equals to 196.875.
-Which means in theory that my query should exlude anything below that number. Which turns out to be true.
-The query lists all the bookins with a payment above that average. This is proved by the lowest payment being
-equal to 200, where we know from all the bookings the lowest is 125 which gets excluded.
+This equals to 200.
+Which means in theory that my query should exlude anything below or equal to that number. Which turns out to be true.
+The query lists all the bookins with a payment above that average. This is proved by the lowest payment shown is
+equal to 225, where we know from all the bookings the lowest is 125 which gets excluded.
 
 */
