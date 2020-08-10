@@ -145,3 +145,16 @@ GROUP BY EventMonth, TourName;
 SELECT * FROM BOOKING
 WHERE Payment > (SELECT Avg(Payment)
 FROM Booking);
+
+--Task 5:
+CREATE VIEW tour_sum AS
+SELECT C.GivenName, C.Surname, B.TourName, T.Description, B.EventYear, B.EventMonth, B.EventDay, B.Payment
+FROM BOOKING B
+
+INNER JOIN CLIENT C
+ON B.ClientId = C.ClientId
+
+INNER JOIN TOUR T
+ON B.TourName = T.TourName;
+
+SELECT * FROM tour_sum;
