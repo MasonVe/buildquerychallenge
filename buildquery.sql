@@ -124,3 +124,24 @@ VALUES (2, 'West', 'Jan', 29, 2016, 225, '12-17-2015');
 
 INSERT INTO BOOKING (ClientId, TourName, EventMonth, EventDay, EventYear, Payment, DateBooked)
 VALUES (3, 'West', 'Jan', 29, 2016, 200, '12-18-2015');
+
+--Task 4
+--Q1
+SELECT C.GivenName, C.Surname, B.TourName, T.Description, B.EventYear, B.EventMonth, B.EventDay, B.Payment
+FROM BOOKING B
+
+INNER JOIN CLIENT C
+ON B.ClientId = C.ClientId
+
+INNER JOIN TOUR T
+ON B.TourName = T.TourName;
+
+--Q2
+SELECT EventMonth, TourName, COUNT(*)
+FROM BOOKING
+GROUP BY EventMonth, TourName;
+
+--Q3
+SELECT * FROM BOOKING
+WHERE Payment > (SELECT Avg(Payment)
+FROM Booking);
