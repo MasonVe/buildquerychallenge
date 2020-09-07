@@ -126,14 +126,20 @@ VALUES (3, 'West', 'Jan', 29, 2016, 200, '12-18-2015');
 
 --Task 4
 --Q1
-SELECT C.GivenName, C.Surname, B.TourName, T.Description, B.EventYear, B.EventMonth, B.EventDay, B.Payment
+SELECT C.GivenName, C.Surname, B.TourName, T.Description, B.EventYear, B.EventMonth,
+B.EventDay, E.EventFee, B.DateBooked, B.Payment
 FROM BOOKING B
 
 INNER JOIN CLIENT C
 ON B.ClientId = C.ClientId
 
 INNER JOIN TOUR T
-ON B.TourName = T.TourName;
+ON B.TourName = T.TourName
+
+INNER JOIN EVENT E
+ON B.TourName = E.TourName AND B.EventYear = E.EventYear AND B.EventMonth = E.EventMonth AND B.EventDay = E.EventDay;
+
+SELECT COUNT(*) FROM BOOKING;
 
 --Q2
 SELECT EventMonth, TourName, COUNT(*)
